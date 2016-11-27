@@ -33,9 +33,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
+    $items=[
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -50,8 +48,21 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
+                    
+                    
+                    
             )
-        ],
+        ];
+    
+    if(!Yii::$app->user->isGuest){
+           $items[]=['label' => 'ürünleri düzenle', 'url' => ['/product/index']] ; 
+        }
+    
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $items        
+        
+        
     ]);
     NavBar::end();
     ?>

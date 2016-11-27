@@ -30,7 +30,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['type_id'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255, 'min'=>3],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
